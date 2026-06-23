@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import { Eyebrow } from '../components/Section';
 import { Icon } from '../components/Icon';
+import { useReveal } from '../lib/useReveal';
 import type { IconName } from '../types';
 
 //#region CONST_HOME_DATA [DOMAIN(8): Content; CONCEPT(8): HomeBlocks; TECH(8): React]
@@ -38,6 +39,8 @@ const VALUES: Array<{ icon: IconName; title: string; text: string }> = [
 //#region COMP_Home [DOMAIN(9): UI; CONCEPT(9): HomePage; TECH(8): React]
 /** @purpose Render the landing page. @complexity 1 */
 export function Home(): ReactElement {
+  const dirRef = useReveal<HTMLUListElement>();
+  const valRef = useReveal<HTMLUListElement>();
   return (
     <>
       <Hero />
@@ -47,7 +50,7 @@ export function Home(): ReactElement {
           <Eyebrow>01 / НАПРАВЛЕНИЯ</Eyebrow>
           <h2>Что мы <b>поставляем</b></h2>
           <p className="hint">Медицинские расходные материалы и средства гигиены — в едином окне поставок.</p>
-          <ul className="grid g-3" style={{ listStyle: 'none', padding: 0 }}>
+          <ul ref={dirRef} className="grid g-3 reveal-group" style={{ listStyle: 'none', padding: 0 }}>
             {DIRECTIONS.map((d) => (
               <li key={d.to + d.title}>
                 <Link className="card" to={d.to} style={{ textDecoration: 'none', color: 'inherit', height: '100%' }}>
@@ -65,7 +68,7 @@ export function Home(): ReactElement {
         <div className="wrap">
           <Eyebrow>02 / ПОЧЕМУ МЫ</Eyebrow>
           <h2>Наши <b>преимущества</b></h2>
-          <ul className="grid g-4" style={{ listStyle: 'none', padding: 0 }}>
+          <ul ref={valRef} className="grid g-4 reveal-group" style={{ listStyle: 'none', padding: 0 }}>
             {VALUES.map((v) => (
               <li key={v.title} className="card">
                 <Icon name={v.icon} />

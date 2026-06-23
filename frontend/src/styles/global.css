@@ -232,6 +232,44 @@ h1 + .hint { margin-top: 20px; }
 .crumbs a { text-decoration: none; color: var(--grey); }
 .crumbs a:hover { color: var(--green-dark); }
 
+/* ============================================================
+   МОТИОН — сдержанное движение (frontend-design skill).
+   Один оркестрованный момент на загрузке (сборка кольца + вход hero),
+   тихий scroll-reveal секций. Только transform/opacity, ease-out, без bounce.
+   ============================================================ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes ringIn { from { opacity: 0; transform: rotate(-110deg) scale(.7); } to { opacity: 1; transform: rotate(0) scale(1); } }
+
+/* Сигнатура: знак-кольцо «собирается» один раз при заходе на сайт */
+.site-header .logo .ring { animation: ringIn .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: .08s; transform-origin: 50% 50%; }
+
+/* Вход hero лесенкой (на загрузке главной) */
+.hero .tagline { animation: fadeUp .5s ease-out both; animation-delay: .05s; }
+.hero h1       { animation: fadeUp .55s ease-out both; animation-delay: .14s; }
+.hero .lead    { animation: fadeUp .55s ease-out both; animation-delay: .24s; }
+.hero .cta     { animation: fadeUp .55s ease-out both; animation-delay: .34s; }
+
+/* Тихий scroll-reveal групп карточек (через useReveal → .is-visible) */
+.reveal-group > * { opacity: 0; transform: translateY(10px); transition: opacity .5s ease-out, transform .5s ease-out; }
+.reveal-group.is-visible > * { opacity: 1; transform: none; }
+.reveal-group.is-visible > *:nth-child(2) { transition-delay: .08s; }
+.reveal-group.is-visible > *:nth-child(3) { transition-delay: .16s; }
+.reveal-group.is-visible > *:nth-child(4) { transition-delay: .24s; }
+.reveal-group.is-visible > *:nth-child(5) { transition-delay: .32s; }
+.reveal-group.is-visible > *:nth-child(6) { transition-delay: .40s; }
+
+/* Ховер-полировка карточек (тихий слой) */
+.card:hover { transform: translateY(-2px); }
+
+/* Quality floor: уважать prefers-reduced-motion — гасим всё движение */
+@media (prefers-reduced-motion: reduce) {
+  .site-header .logo .ring,
+  .hero .tagline, .hero h1, .hero .lead, .hero .cta { animation: none !important; }
+  .reveal-group > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .card:hover { transform: none; }
+  html { scroll-behavior: auto; }
+}
+
 /* skip-link (a11y) */
 .skip-link { position: absolute; left: -9999px; top: 0; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 0 0 10px 0; z-index: 100; }
 .skip-link:focus { left: 0; }

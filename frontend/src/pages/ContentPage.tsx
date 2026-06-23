@@ -20,6 +20,7 @@ import type { PageBlock } from '../types';
 import { getPage } from '../content/pages';
 import { PageHeader, Crumbs } from '../components/Section';
 import { Icon } from '../components/Icon';
+import { useReveal } from '../lib/useReveal';
 import { ldd } from '../lib/ldd';
 
 //#region COMP_Block [DOMAIN(8): Content; CONCEPT(9): BlockRender; TECH(8): React]
@@ -56,6 +57,7 @@ function Block({ block }: { block: PageBlock }): ReactElement {
 /** @purpose Render a metadata page by key, or a friendly fallback. @complexity 2 */
 export function ContentPage({ pageKey, crumbs }: { pageKey: string; crumbs?: Array<{ label: string; to?: string }> }): ReactElement {
   const page = getPage(pageKey);
+  const blocksRef = useReveal<HTMLDivElement>();
   ldd(8, 'ContentPage', 'RENDER', `belief: key="${pageKey}" expect=found actual=${page ? 'found' : 'missing'}`);
 
   if (!page) {
@@ -70,7 +72,7 @@ export function ContentPage({ pageKey, crumbs }: { pageKey: string; crumbs?: Arr
     <div className="page"><div className="wrap">
       {crumbs && <Crumbs trail={crumbs} />}
       <PageHeader eyebrow={page.eyebrow} titleLead={page.titleLead} titleAccent={page.titleAccent} lead={page.lead} />
-      <div style={{ marginTop: 32, display: 'grid', gap: 24 }}>
+      <div ref={blocksRef} className="reveal-group" style={{ marginTop: 32, display: 'grid', gap: 24 }}>
         {page.blocks.map((b, i) => <Block key={i} block={b} />)}
       </div>
     </div></div>
