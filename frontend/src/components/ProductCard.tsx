@@ -22,7 +22,7 @@ import { Icon } from './Icon';
 //#region COMP_ProductCard [DOMAIN(8): UI; CONCEPT(8): CatalogCard; TECH(8): React]
 /** @purpose Render a single product card. @complexity 2 */
 export function ProductCard({ product }: { product: Product }): ReactElement {
-  const iconName = product.category === 'hygiene' ? 'hygiene' : 'home';
+  const iconName = product.category === 'hygiene' ? 'hygiene' : 'medicine';
   return (
     <li className="card product-card">
       <div className="thumb">

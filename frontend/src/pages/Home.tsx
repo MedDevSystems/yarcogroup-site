@@ -23,15 +23,15 @@ import type { IconName } from '../types';
 
 //#region CONST_HOME_DATA [DOMAIN(8): Content; CONCEPT(8): HomeBlocks; TECH(8): React]
 const DIRECTIONS: Array<{ icon: IconName; title: string; text: string; to: string }> = [
-  { icon: 'hygiene', title: 'Средства гигиены', text: 'Антисептики, мыло, бумажная продукция, СИЗ.', to: '/products/hygiene' },
-  { icon: 'home', title: 'Непродовольственные товары', text: 'Хозтовары, расходные материалы, упаковка.', to: '/products/non-food' },
-  { icon: 'horeca', title: 'HoReCa', text: 'Поставки для кафе, ресторанов и гостиниц.', to: '/products' },
+  { icon: 'hygiene', title: 'Средства гигиены', text: 'Кожные антисептики, дезинфекция, мыло, салфетки.', to: '/products/hygiene' },
+  { icon: 'products', title: 'Непродовольственные товары', text: 'Шприцы, бинты, вата, перчатки, бахилы.', to: '/products/non-food' },
+  { icon: 'medicine', title: 'Для медицинских организаций', text: 'Расходные материалы для клиник, лабораторий и стационаров.', to: '/products' },
 ];
 const VALUES: Array<{ icon: IconName; title: string; text: string }> = [
-  { icon: 'reliability', title: 'Надёжность', text: 'Проверенные поставщики и контроль качества.' },
-  { icon: 'delivery', title: 'Оперативные поставки', text: 'Доставка по всей России и странам СНГ.' },
-  { icon: 'quality', title: 'Качество', text: 'Сертифицированная продукция, стабильные характеристики.' },
-  { icon: 'partners', title: 'Партнёрство', text: 'Долгосрочные и прозрачные отношения.' },
+  { icon: 'reliability', title: 'Надёжность', text: 'Проверенные производители и входной контроль качества.' },
+  { icon: 'delivery', title: 'Оперативные поставки', text: 'Доставка в медучреждения по всей России и СНГ.' },
+  { icon: 'quality', title: 'Сертификаты', text: 'Регистрационные удостоверения и сертификаты на продукцию.' },
+  { icon: 'partners', title: 'Партнёрство', text: 'Долгосрочные и прозрачные отношения с клиниками.' },
 ];
 //#endregion CONST_HOME_DATA
 
@@ -46,7 +46,7 @@ export function Home(): ReactElement {
         <div className="wrap">
           <Eyebrow>01 / НАПРАВЛЕНИЯ</Eyebrow>
           <h2>Что мы <b>поставляем</b></h2>
-          <p className="hint">Всё необходимое для бизнеса — в едином окне поставок.</p>
+          <p className="hint">Медицинские расходные материалы и средства гигиены — в едином окне поставок.</p>
           <ul className="grid g-3" style={{ listStyle: 'none', padding: 0 }}>
             {DIRECTIONS.map((d) => (
               <li key={d.to + d.title}>
@@ -81,7 +81,7 @@ export function Home(): ReactElement {
         <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
           <div>
             <h2 style={{ marginBottom: 8 }}>Нужны <b>поставки</b>?</h2>
-            <p className="lead" style={{ margin: 0 }}>Подберём ассортимент под ваш бизнес и условия.</p>
+            <p className="lead" style={{ margin: 0 }}>Подберём ассортимент под ваше медучреждение и условия.</p>
           </div>
           <div className="cta">
             <Link className="btn btn-primary" to="/contacts">Связаться с нами</Link>

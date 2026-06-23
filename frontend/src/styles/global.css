@@ -41,6 +41,9 @@ p  { margin: 0 0 16px; }
 /* PageHeader: дать воздух между крупным заголовком и лидом */
 header > h1 + .lead, header > h2 + .lead { margin-top: 18px; }
 .hint { color: #666; font-weight: 300; font-size: 14px; max-width: 660px; margin: -12px 0 28px; }
+/* Каталог/категории: .hint стоит под КРУПНЫМ h1 — отрицательный отступ брендбука здесь даёт перекрытие,
+   поэтому под h1 даём нормальный положительный интервал. */
+h1 + .hint { margin-top: 20px; }
 .muted { color: var(--grey); }
 
 /* eyebrow — нумерованный микро-заголовок секции (как в брендбуке) */
@@ -145,7 +148,8 @@ header > h1 + .lead, header > h2 + .lead { margin-top: 18px; }
 .hero .tagline b { color: var(--green); font-weight: 600; }
 .hero h1 { margin: 18px 0 0; max-width: 14ch; }
 .hero .lead { margin-top: 26px; }
-.hero .cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+.cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero .cta { margin-top: 34px; }
 .hero .dotfield {
   position: absolute; right: -40px; top: 40px; width: 360px; height: 280px; pointer-events: none;
   background-image: radial-gradient(var(--green) 1.1px, transparent 1.4px);

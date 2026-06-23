@@ -29,14 +29,14 @@ describe('api (stub seam)', () => {
   it('searches by product name', async () => {
     const r = await api.searchProducts('мыло');
     expect(r).toHaveLength(1);
-    expect(r[0].name).toMatch(/Жидкое мыло/);
+    expect(r[0].name).toMatch(/Мыло жидкое/);
     ldd(9, 'api.test', 'BY_NAME', `belief: "мыло" → ${r.length}`);
   });
 
   it('searches by article code', async () => {
     const r = await api.searchProducts('NFD-2005');
     expect(r).toHaveLength(1);
-    expect(r[0].name).toMatch(/Батарейки/);
+    expect(r[0].name).toMatch(/Бахилы/);
     ldd(9, 'api.test', 'BY_ARTICLE', `belief: "NFD-2005" → ${r.length}`);
   });
 

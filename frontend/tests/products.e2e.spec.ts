@@ -43,20 +43,20 @@ test('search filters by name and by article', async ({ page }) => {
 
   await box.fill('мыло');
   await expect(status(page)).toContainText('Найдено товаров: 1');
-  await expect(page.getByRole('heading', { name: /Жидкое мыло/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Мыло жидкое/ })).toBeVisible();
 
   await box.fill('NFD-2005');
   await expect(status(page)).toContainText('Найдено товаров: 1');
-  await expect(page.getByRole('heading', { name: /Батарейки/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Бахилы/ })).toBeVisible();
 });
 
 test('search stays within the active category scope', async ({ page }) => {
   await page.goto('/products/non-food');
   await expect(status(page)).toContainText('Найдено товаров: 8');
-  // «салфетки» exist in BOTH categories; scoped to non-food only the столовые салфетки match.
-  await page.getByRole('searchbox', { name: 'Поиск по товарам' }).fill('салфетки');
+  // «стерильн» exists in BOTH categories (салфетки спиртовые / бинт марлевый); scoped to non-food → only бинт.
+  await page.getByRole('searchbox', { name: 'Поиск по товарам' }).fill('стерильн');
   await expect(status(page)).toContainText('Найдено товаров: 1');
-  await expect(page.getByRole('heading', { name: /Салфетки бумажные столовые/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Бинт марлевый стерильный/ })).toBeVisible();
 });
 
 test('no-match query shows an explicit empty state', async ({ page }) => {

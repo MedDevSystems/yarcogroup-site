@@ -50,7 +50,7 @@ const ICONS: Record<IconName, ReactElement> = {
   cosmetics: (<><path className="acc" d="M12 21c0-5 2.4-8.4 7-9.2-.4 5-2.8 8.4-7 9.2z" /><path d="M12 21c0-5-2.4-8.4-7-9.2.4 5 2.8 8.4 7 9.2z" /><path d="M12 21V10.5" /></>),
   products: (<><path d="M4 8.5h16l-1.5 10.2a2 2 0 0 1-2 1.7H7.5a2 2 0 0 1-2-1.7z" /><path d="M8.6 8.5 11 4M15.4 8.5 13 4" /><path className="acc" d="M9.5 12.5v4M14.5 12.5v4" /></>),
   home: (<><path d="M3.5 11 12 4l8.5 7" /><path d="M5.5 9.7V20h13V9.7" /><path className="acc" d="M10 20v-5h4v5" /></>),
-  horeca: (<><path d="M7 3v6.2a2 2 0 0 0 4 0V3M9 9.4V21" /><path className="acc" d="M16.5 3c-1.6 0-2.5 1.6-2.5 4s.9 4 2.5 4" /><path d="M16.5 11V21" /></>),
+  horeca: (<><path d="M5 3.2V8M7.5 3.2V8M10 3.2V8" /><path d="M5 8c0 1.5 1.1 2.4 2.5 2.4S10 9.5 10 8" /><path d="M7.5 10.4V21" /><path className="acc" d="M16.2 3.2c-1.9 0-3 1.6-3 3.8 0 1.9 1.1 3.2 3 3.2s3-1.3 3-3.2c0-2.2-1.1-3.8-3-3.8z" /><path d="M16.2 10.2V21" /></>),
   reliability: (<><path d="M12 3 19 6v5c0 5-3 8-7 9.6C8 19 5 16 5 11V6z" /><path className="acc" d="M9 12l2.2 2.2L15.2 10" strokeWidth="2" /></>),
   delivery: (<><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z" /><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" /><path className="acc" d="m7.75 5.25 8.5 4.5" /></>),
   quality: (<><path d="M12 3.5 14.6 9l6 .6-4.5 4 1.3 5.9L12 16.6 6.6 19.5l1.3-5.9-4.5-4 6-.6z" /><path className="acc" d="M9.6 12.2 11.3 14l3.1-3.4" strokeWidth="1.8" /></>),
