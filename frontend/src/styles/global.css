@@ -81,6 +81,7 @@ h1 + .hint { margin-top: 20px; }
 .logo .tail { letter-spacing: var(--track-wide); color: var(--grey); font-weight: 300; margin-left: .5em; }
 .logo.md { font-size: 30px; }
 .logo.sm { font-size: 22px; }
+@media (max-width: 520px) { .logo.md { font-size: 21px; } }
 .logo.on-dark { color: #F4F4F4; }
 .logo.on-dark .tail { color: #B8B8B8; }
 
@@ -96,7 +97,8 @@ h1 + .hint { margin-top: 20px; }
 .utility-bar a:hover .util-ico { color: var(--green-dark); }
 @media (max-width: 640px) { .utility-bar .wrap { justify-content: center; gap: 16px; flex-wrap: wrap; } }
 
-.brand-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 24px; }
+/* только вертикальный паддинг — горизонтальные 28px наследуются от .wrap (иначе лого прилипает к краю на мобильном) */
+.brand-row { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; padding-bottom: 16px; gap: 24px; }
 
 /* ---------- главное меню + выпадающие подменю ---------- */
 .main-nav .menu { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; align-items: center; }
