@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЯРКО ГРУПП — элементы фирстиля для сайта</title>
+
+<!-- Иконка вкладки = знак-кольцо (можно использовать как favicon) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%238CC63E' d='M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     ДИЗАЙН-ТОКЕНЫ — фирменные значения ЯРКО ГРУПП
+     Скопируйте этот блок в ваш global.css
+     ============================================================ */
+  :root{
+    --ink:        #222222;   /* основной тёмный  */
+    --green:      #8CC63E;   /* фирменный зелёный */
+    --green-dark: #5E9C2E;   /* зелёный для нажатий/ховера */
+    --green-soft: #BCE08A;   /* светлый зелёный (градиент, фоны) */
+    --paper:      #FFFFFF;   /* белый */
+    --grey:       #9A9A9A;   /* вспомогательный текст / «групп» */
+    --hair:       #ECECEC;   /* тонкие линии-разделители */
+    --bg-soft:    #FAFAFA;   /* фон секций */
+
+    --font: "Montserrat", "Segoe UI", Arial, sans-serif;
+
+    --track-tight: 0.06em;
+    --track-wide:  0.18em;
+    --track-xwide: 0.34em;
+
+    --radius: 14px;
+    --maxw: 1120px;
+  }
+
+  /* ===================== Оформление этой страницы ===================== */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:var(--font); color:var(--ink);
+    background:var(--paper); font-weight:400; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+
+  /* — шапка страницы — */
+  .top{padding:64px 0 36px; border-bottom:1px solid var(--hair)}
+  .top .tagline{margin-top:18px; letter-spacing:var(--track-xwide); font-size:13px; font-weight:300}
+  .top .tagline b{color:var(--green); font-weight:600}
+  .top .accent-line{width:120px; height:3px; background:var(--green); margin-top:22px}
+  .top .lead{margin-top:26px; max-width:560px; color:#555; font-weight:300; font-size:15px}
+
+  /* — секции — */
+  section{padding:56px 0; border-bottom:1px solid var(--hair)}
+  .eyebrow{display:flex; align-items:center; gap:12px; margin-bottom:8px}
+  .eyebrow .num{font-size:12px; letter-spacing:var(--track-wide); color:var(--grey); font-weight:500}
+  .eyebrow .dot-ring{width:14px; height:14px; flex:0 0 auto}
+  h2{margin:0 0 28px; font-weight:200; font-size:30px; letter-spacing:var(--track-tight)}
+  h2 b{font-weight:500}
+  .hint{color:#666; font-weight:300; font-size:14px; max-width:640px; margin:-14px 0 28px}
+
+  /* — сетка карточек ассетов — */
+  .grid{display:grid; gap:20px}
+  .g-2{grid-template-columns:repeat(2,1fr)}
+  .g-3{grid-template-columns:repeat(3,1fr)}
+  .g-4{grid-template-columns:repeat(4,1fr)}
+  .g-6{grid-template-columns:repeat(6,1fr)}
+  @media(max-width:880px){.g-3,.g-4,.g-6{grid-template-columns:repeat(2,1fr)} .g-2{grid-template-columns:1fr}}
+  @media(max-width:520px){.g-6{grid-template-columns:repeat(2,1fr)}}
+
+  .asset{
+    border:1px solid var(--hair); border-radius:var(--radius);
+    overflow:hidden; background:var(--paper); display:flex; flex-direction:column;
+  }
+  .asset-canvas{
+    display:flex; align-items:center; justify-content:center;
+    min-height:130px; padding:26px; gap:14px; flex-wrap:wrap; text-align:center;
+  }
+  .asset-canvas.dark{background:var(--ink)}
+  .asset-canvas.soft{background:var(--bg-soft)}
+  figcaption{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:11px 16px; border-top:1px solid var(--hair); gap:10px;
+  }
+  .asset-name{font-size:12.5px; color:#444; letter-spacing:.02em}
+  .asset-name small{display:block; color:var(--grey); font-size:11px; margin-top:2px}
+  .code-btn{
+    border:1px solid var(--hair); background:var(--paper); color:#555;
+    font-family:var(--font); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    padding:6px 12px; border-radius:999px; cursor:pointer; transition:.18s;
+  }
+  .code-btn:hover{border-color:var(--green); color:var(--green-dark)}
+  .code-view{border-top:1px solid var(--hair); background:#1b1b1b}
+  .code-view[hidden]{display:none}
+  .code-bar{display:flex; justify-content:flex-end; padding:8px 10px}
+  .copy-btn{
+    border:1px solid #3a3a3a; background:transparent; color:#cfcfcf;
+    font-family:var(--font); font-size:11px; letter-spacing:.06em;
+    padding:5px 12px; border-radius:7px; cursor:pointer; transition:.18s;
+  }
+  .copy-btn:hover{border-color:var(--green); color:var(--green)}
+  pre{margin:0; padding:0 16px 16px; overflow:auto}
+  code{
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px; line-height:1.6; color:#d7e6c4; white-space:pre;
+  }
+
+  /* ============================================================
+     ЛОГОТИП — лого-локап (текст + знак)
+     ============================================================ */
+  .logo{display:inline-flex; align-items:center; font-weight:300; color:var(--ink); white-space:nowrap}
+  .logo .word{letter-spacing:var(--track-wide)}
+  .logo .ring{width:1em; height:1em; margin:0 .10em -.02em; flex:0 0 auto}
+  .logo .tail{
+    font-size:.40em; letter-spacing:var(--track-xwide); color:var(--grey);
+    align-self:flex-end; padding:0 0 .55em .18em; font-weight:300;
+  }
+  .logo.on-dark{color:#F4F4F4}
+  .logo.on-dark .tail{color:#B8B8B8}
+  .logo.lg{font-size:64px}
+  .logo.md{font-size:40px}
+  .logo.sm{font-size:26px}
+
+  /* стэк-вариант: ЯРКО над «групп» */
+  .logo-stack{display:inline-flex; flex-direction:column; align-items:center; font-weight:300; color:var(--ink)}
+  .logo-stack .row{display:inline-flex; align-items:center; font-size:46px; letter-spacing:var(--track-wide)}
+  .logo-stack .row .ring{width:1em; height:1em; margin:0 0 -.02em .08em}
+  .logo-stack .tail{font-size:18px; letter-spacing:.5em; color:var(--grey); margin-top:4px; padding-left:.5em}
+
+  /* ============================================================
+     ЦВЕТА
+     ============================================================ */
+  .sw{border:1px solid var(--hair); border-radius:var(--radius); overflow:hidden}
+  .sw .chip{height:120px}
+  .sw .meta{padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .sw .meta b{font-weight:500; font-size:14px}
+  .sw .meta span{color:var(--grey); font-size:12px; display:block}
+  .sw .hex{font-family:ui-monospace,monospace; font-size:12px; color:#444; cursor:pointer; border:1px solid var(--hair); padding:5px 9px; border-radius:7px}
+  .sw .hex:hover{border-color:var(--green); color:var(--green-dark)}
+
+  /* ============================================================
+     ТИПОГРАФИКА
+     ============================================================ */
+  .type-row{padding:18px 0; border-bottom:1px dashed var(--hair); display:flex; align-items:baseline; gap:24px; flex-wrap:wrap}
+  .type-row:last-child{border-bottom:0}
+  .type-label{flex:0 0 150px; color:var(--grey); font-size:12px; letter-spacing:var(--track-wide); text-transform:uppercase}
+  .t-h1{font-size:44px; font-weight:200; letter-spacing:var(--track-tight)}
+  .t-h2{font-size:30px; font-weight:300}
+  .t-h3{font-size:21px; font-weight:500; letter-spacing:var(--track-wide); text-transform:uppercase}
+  .t-body{font-size:16px; font-weight:400}
+  .t-cap{font-size:12px; font-weight:500; letter-spacing:var(--track-wide); text-transform:uppercase; color:var(--grey)}
+
+  /* ============================================================
+     ИКОНКИ
+     ============================================================ */
+  .ico{width:40px; height:40px; color:var(--ink)}
+  .ico .acc{color:var(--green)} /* зелёный акцент внутри иконки */
+  .ico-name{font-size:13px; color:#333; letter-spacing:.02em}
+  .icon-card .asset-canvas{flex-direction:column; gap:14px; min-height:150px}
+
+  /* ============================================================
+     КНОПКИ И НАВИГАЦИЯ
+     ============================================================ */
+  .btn{
+    font-family:var(--font); font-weight:500; font-size:13px; letter-spacing:.05em;
+    border:0; border-radius:10px; padding:13px 26px; cursor:pointer; transition:.18s;
+    display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+  }
+  .btn-primary{background:var(--green); color:#fff}
+  .btn-primary:hover{background:var(--green-dark)}
+  .btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--ink)}
+  .btn-ghost:hover{border-color:var(--green); color:var(--green-dark)}
+  .btn-light{background:#fff; color:var(--ink)}
+  .btn .ring{width:15px; height:15px}
+
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 22px; border:1px solid var(--hair); border-radius:var(--radius); width:100%;
+  }
+  .nav .menu{display:flex; gap:26px; list-style:none; margin:0; padding:0}
+  .nav .menu a{color:#444; text-decoration:none; font-size:13px; letter-spacing:.04em; font-weight:400}
+  .nav .menu a:hover{color:var(--green-dark)}
+  @media(max-width:640px){.nav .menu{display:none}}
+
+  /* ============================================================
+     ДЕКОР (как на фирменном бланке)
+     ============================================================ */
+  .decor{position:relative; height:240px; border:1px solid var(--hair); border-radius:var(--radius); overflow:hidden; background:#fff}
+  .decor .corner{position:absolute; top:-70px; right:-70px; width:230px; height:230px; opacity:.85}
+  .dotfield{
+    width:100%; height:120px; border-radius:var(--radius); border:1px solid var(--hair);
+    background-image:radial-gradient(var(--green) 1.1px, transparent 1.4px);
+    background-size:11px 11px; background-position:center;
+    -webkit-mask-image:linear-gradient(90deg,#000,transparent);
+            mask-image:linear-gradient(90deg,#000,transparent);
+    opacity:.5;
+  }
+
+  footer{padding:46px 0 70px; color:var(--grey); font-size:12.5px; font-weight:300}
+  .copied{color:var(--green)!important; border-color:var(--green)!important}
+</style>
+</head>
+<body>
+
+<!-- ====================== ШАПКА ====================== -->
+<header class="top">
+  <div class="wrap">
+    <div class="logo lg" id="hero-logo">
+      <span class="word">ЯРК</span>
+      <svg class="ring" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="grad-hero" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#CAE88A"/>
+            <stop offset=".55" stop-color="#8CC63E"/>
+            <stop offset="1" stop-color="#84C213"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#grad-hero)" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/>
+      </svg>
+      <span class="tail">групп</span>
+    </div>
+
+    <div class="tagline"><b>ВСЕ</b> НЕОБХОДИМОЕ</div>
+    <div class="accent-line"></div>
+    <p class="lead">Набор фирменных элементов, восстановленных из бренд-бука как чистый HTML&nbsp;+&nbsp;SVG. Каждый блок можно раскрыть и скопировать готовый код.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ====================== 01 ЗНАК ====================== -->
+  <section id="symbol">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">01 / ЗНАК</span></div>
+    <h2>Фирменный <b>знак</b></h2>
+    <p class="hint">Зелёный бублик с центрированным крестом, который делит его на четыре части. Крест — прозрачные разрывы постоянной ширины, поэтому знак ложится на любой фон — на тёмном разрывы показывают фон, а не белый цвет. Градиентная версия — для крупных размеров, плоская — для мелких и favicon.</p>
+    <div class="grid g-3">
+
+      <figure class="asset">
+        <div class="asset-canvas">
+          <svg width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Знак ЯРКО">
+            <defs>
+              <linearGradient id="grad-mark" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#CAE88A"/>
+                <stop offset=".55" stop-color="#8CC63E"/>
+                <stop offset="1" stop-color="#84C213"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#grad-mark)" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/>
+          </svg>
+        </div>
+        <figcaption><span class="asset-name">Знак · градиент</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset">
+        <div class="asset-canvas">
+          <svg width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Знак ЯРКО плоский">
+            <path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/>
+          </svg>
+        </div>
+        <figcaption><span class="asset-name">Знак · плоский <small>для мелких размеров / favicon</small></span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset">
+        <div class="asset-canvas dark">
+          <svg width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Знак ЯРКО на тёмном">
+            <path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/>
+          </svg>
+        </div>
+        <figcaption><span class="asset-name">Знак · на тёмном фоне</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ====================== 02 ЛОГОТИП ====================== -->
+  <section id="logo">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">02 / ЛОГОТИП</span></div>
+    <h2>Логотип <b>и варианты</b></h2>
+    <p class="hint">Локап собран как текст + инлайн-SVG (буква «О» = знак), а не картинкой — масштабируется размером шрифта, легко перекрашивается. Шрифт логотипа — Montserrat Light с широким трекингом (близко к оригиналу; при необходимости можно перевести в кривые для 100%-совпадения).</p>
+    <div class="grid g-2">
+
+      <figure class="asset">
+        <div class="asset-canvas soft">
+          <div class="logo md">
+            <span class="word">ЯРК</span>
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg>
+            <span class="tail">групп</span>
+          </div>
+        </div>
+        <figcaption><span class="asset-name">Горизонтальный · на светлом</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset">
+        <div class="asset-canvas dark">
+          <div class="logo md on-dark">
+            <span class="word">ЯРК</span>
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg>
+            <span class="tail">групп</span>
+          </div>
+        </div>
+        <figcaption><span class="asset-name">Горизонтальный · на тёмном</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset">
+        <div class="asset-canvas soft">
+          <div class="logo-stack">
+            <span class="row">ЯРК<svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg></span>
+            <span class="tail">групп</span>
+          </div>
+        </div>
+        <figcaption><span class="asset-name">Вертикальный (стэк)</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset">
+        <div class="asset-canvas soft">
+          <div class="logo sm">
+            <span class="word">ЯРК</span>
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg>
+            <span class="tail">групп</span>
+          </div>
+        </div>
+        <figcaption><span class="asset-name">Компактный (для шапки)</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ====================== 03 ЦВЕТА ====================== -->
+  <section id="colors">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">03 / ЦВЕТА</span></div>
+    <h2>Фирменные <b>цвета</b></h2>
+    <p class="hint">Три базовых цвета из бренд-бука плюс два служебных оттенка зелёного для состояний и градиента. Нажмите на HEX, чтобы скопировать. Все цвета уже заданы CSS-переменными в начале файла.</p>
+    <div class="grid g-3">
+      <div class="sw"><div class="chip" style="background:#222222"></div><div class="meta"><div><b>Тёмный</b><span>--ink · текст, фон</span></div><span class="hex" data-hex>#222222</span></div></div>
+      <div class="sw"><div class="chip" style="background:#8CC63E"></div><div class="meta"><div><b>Зелёный</b><span>--green · акцент</span></div><span class="hex" data-hex>#8CC63E</span></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF; border-bottom:1px solid var(--hair)"></div><div class="meta"><div><b>Белый</b><span>--paper · фон</span></div><span class="hex" data-hex>#FFFFFF</span></div></div>
+      <div class="sw"><div class="chip" style="background:#5E9C2E"></div><div class="meta"><div><b>Зелёный тёмный</b><span>--green-dark · ховер</span></div><span class="hex" data-hex>#5E9C2E</span></div></div>
+      <div class="sw"><div class="chip" style="background:#BCE08A"></div><div class="meta"><div><b>Зелёный светлый</b><span>--green-soft · градиент</span></div><span class="hex" data-hex>#BCE08A</span></div></div>
+      <div class="sw"><div class="chip" style="background:#9A9A9A"></div><div class="meta"><div><b>Серый</b><span>--grey · «групп», подписи</span></div><span class="hex" data-hex>#9A9A9A</span></div></div>
+    </div>
+  </section>
+
+  <!-- ====================== 04 ТИПОГРАФИКА ====================== -->
+  <section id="type">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">04 / ШРИФТ</span></div>
+    <h2>Типографика — <b>Montserrat</b></h2>
+    <p class="hint">Фирменный шрифт из бренд-бука — тонкий геометрический гротеск. Ближайший бесплатный аналог с полной кириллицей — Montserrat. Тонкие начертания (200–300) для заголовков, 400 для текста, 500 + капс + трекинг для подписей.</p>
+    <div class="type-row"><span class="type-label">H1 · 200</span><span class="t-h1">Надёжные поставки</span></div>
+    <div class="type-row"><span class="type-label">H2 · 300</span><span class="t-h2">Всё необходимое для бизнеса</span></div>
+    <div class="type-row"><span class="type-label">H3 · 500 caps</span><span class="t-h3">Стать партнёром</span></div>
+    <div class="type-row"><span class="type-label">Текст · 400</span><span class="t-body">Проверенные поставщики и контроль качества. Оперативные поставки по всей России и СНГ.</span></div>
+    <div class="type-row"><span class="type-label">Подпись · 500</span><span class="t-cap">медицина · гигиена · косметика</span></div>
+  </section>
+
+  <!-- ====================== 05 ИКОНКИ: КАТЕГОРИИ ====================== -->
+  <section id="cats">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">05 / ИКОНКИ</span></div>
+    <h2>Категории <b>продукции</b></h2>
+    <p class="hint">Линейные иконки в едином стиле (viewBox 24, обводка currentColor, зелёный акцент — класс <code style="color:var(--green-dark)">.acc</code>). Цвет наследуется от родителя, поэтому одну иконку можно красить под тёмную/светлую тему.</p>
+    <div class="grid g-6">
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Медицина">
+            <rect x="4" y="4" width="16" height="16" rx="4"/>
+            <path class="acc" d="M12 8.5v7M8.5 12h7" stroke="currentColor" stroke-width="2.2"/>
+          </svg>
+          <span class="ico-name">Медицина</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Гигиена">
+            <path d="M12 3.2c4 4.8 6.2 7.6 6.2 10.8a6.2 6.2 0 0 1-12.4 0c0-3.2 2.2-6 6.2-10.8z"/>
+            <path class="acc" d="M9 14a3 3 0 0 0 3 3" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Гигиена</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Косметика">
+            <path class="acc" d="M12 21c0-5 2.4-8.4 7-9.2-.4 5-2.8 8.4-7 9.2z" stroke="currentColor"/>
+            <path d="M12 21c0-5-2.4-8.4-7-9.2.4 5 2.8 8.4 7 9.2z"/>
+            <path d="M12 21V10.5"/>
+          </svg>
+          <span class="ico-name">Косметика</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Продукты">
+            <path d="M4 8.5h16l-1.5 10.2a2 2 0 0 1-2 1.7H7.5a2 2 0 0 1-2-1.7z"/>
+            <path d="M8.6 8.5 11 4M15.4 8.5 13 4"/>
+            <path class="acc" d="M9.5 12.5v4M14.5 12.5v4" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Продукты</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Товары для дома">
+            <path d="M3.5 11 12 4l8.5 7"/>
+            <path d="M5.5 9.7V20h13V9.7"/>
+            <path class="acc" d="M10 20v-5h4v5" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Товары для дома</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="HoReCa">
+            <path d="M7 3v6.2a2 2 0 0 0 4 0V3M9 9.4V21"/>
+            <path class="acc" d="M16.5 3c-1.6 0-2.5 1.6-2.5 4s.9 4 2.5 4" stroke="currentColor"/>
+            <path d="M16.5 11V21"/>
+          </svg>
+          <span class="ico-name">HoReCa</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ====================== 06 ИКОНКИ: ЦЕННОСТИ ====================== -->
+  <section id="values">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">06 / ИКОНКИ</span></div>
+    <h2>Ценности и <b>преимущества</b></h2>
+    <p class="hint">Иконки для блоков «почему мы» и преимуществ. Тот же стиль и сетка, что и у категорий — для визуальной цельности сайта.</p>
+    <div class="grid g-4">
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Надёжность">
+            <path d="M12 3 19 6v5c0 5-3 8-7 9.6C8 19 5 16 5 11V6z"/>
+            <path class="acc" d="M9 12l2.2 2.2L15.2 10" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span class="ico-name">Надёжность</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Поставки">
+            <path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/>
+            <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/>
+            <path class="acc" d="m7.75 5.25 8.5 4.5" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Поставки</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Масштаб">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12h18"/>
+            <path class="acc" d="M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9z" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Масштаб</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Партнёрство">
+            <circle cx="8" cy="8" r="2.6"/>
+            <path d="M3.4 19c0-3 2-4.8 4.6-4.8s4.6 1.8 4.6 4.8"/>
+            <circle class="acc" cx="16" cy="9" r="2.2" stroke="currentColor"/>
+            <path class="acc" d="M13.6 19c0-2.6 1.5-4.4 3.6-4.4 2.3 0 3.4 1.8 3.4 4.4" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Партнёрство</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Широкий ассортимент">
+            <rect x="3" y="9" width="7" height="7" rx="1.2"/>
+            <rect x="14" y="9" width="7" height="7" rx="1.2"/>
+            <rect class="acc" x="8.5" y="3.5" width="7" height="7" rx="1.2" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Ассортимент</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Доступность">
+            <path d="M4 4h8.2L20 11.8 12.8 19 4 10.2z"/>
+            <circle class="acc" cx="8" cy="8" r="1.4" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Доступность</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Логистика">
+            <path d="M2.5 6.5h11v9h-11z"/>
+            <path d="M13.5 9.5h3.6l3 3v3h-6.6z"/>
+            <circle class="acc" cx="7" cy="18" r="1.9" stroke="currentColor"/>
+            <circle class="acc" cx="17" cy="18" r="1.9" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Логистика</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset icon-card">
+        <div class="asset-canvas">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-label="Поддержка">
+            <path d="M4 13a8 8 0 0 1 16 0"/>
+            <rect x="3" y="13" width="3.5" height="6" rx="1.2"/>
+            <rect class="acc" x="17.5" y="13" width="3.5" height="6" rx="1.2" stroke="currentColor"/>
+            <path class="acc" d="M19 19v.8a2.2 2.2 0 0 1-2.2 2.2H13" stroke="currentColor"/>
+          </svg>
+          <span class="ico-name">Поддержка</span>
+        </div>
+        <figcaption><span class="asset-name">Иконка</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ====================== 07 КНОПКИ И НАВИГАЦИЯ ====================== -->
+  <section id="ui">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">07 / UI</span></div>
+    <h2>Кнопки и <b>навигация</b></h2>
+    <p class="hint">Базовые интерактивные элементы в фирменных цветах. Главная CTA «Стать партнёром» — зелёная заливка; вторичные — контурные.</p>
+    <div class="grid g-2">
+
+      <figure class="asset">
+        <div class="asset-canvas soft" style="gap:14px">
+          <button class="btn btn-primary">Стать партнёром</button>
+          <button class="btn btn-ghost">Каталог</button>
+        </div>
+        <figcaption><span class="asset-name">Кнопки · светлый фон</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset">
+        <div class="asset-canvas dark" style="gap:14px">
+          <button class="btn btn-primary">Оставить заявку</button>
+          <button class="btn btn-light">Связаться</button>
+        </div>
+        <figcaption><span class="asset-name">Кнопки · тёмный фон</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset" style="grid-column:1 / -1">
+        <div class="asset-canvas" style="padding:20px">
+          <nav class="nav">
+            <div class="logo sm">
+              <span class="word">ЯРК</span>
+              <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg>
+              <span class="tail">групп</span>
+            </div>
+            <ul class="menu">
+              <li><a href="#">Каталог</a></li>
+              <li><a href="#">О компании</a></li>
+              <li><a href="#">Доставка</a></li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+            <button class="btn btn-primary" style="padding:10px 20px">Стать партнёром</button>
+          </nav>
+        </div>
+        <figcaption><span class="asset-name">Шапка сайта (логотип + меню + CTA)</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ====================== 08 ДЕКОР ====================== -->
+  <section id="decor">
+    <div class="eyebrow"><svg class="dot-ring" viewBox="0 0 100 100"><path fill="#8CC63E" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/></svg><span class="num">08 / ДЕКОР</span></div>
+    <h2>Декоративные <b>элементы</b></h2>
+    <p class="hint">Фоновые акценты с фирменного бланка: полупрозрачное кольцо-в-углу и точечная сетка. Подходят для хедеров, секций и футера.</p>
+    <div class="grid g-2">
+
+      <figure class="asset">
+        <div class="decor asset-canvas" style="padding:0; display:block; min-height:240px">
+          <svg class="corner" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="49.5" fill="none" stroke="#8CC63E" stroke-width=".6" opacity=".5"/>
+            <path fill="#8CC63E" opacity=".28" d="M51.325 98.012 A48.03 48.03 0 0 0 98.012 51.325 L77.498 51.325 A27.53 27.53 0 0 1 51.325 77.498 Z M98.012 48.675 A48.03 48.03 0 0 0 51.325 1.988 L51.325 22.502 A27.53 27.53 0 0 1 77.498 48.675 Z M48.675 1.988 A48.03 48.03 0 0 0 1.988 48.675 L22.502 48.675 A27.53 27.53 0 0 1 48.675 22.502 Z M1.988 51.325 A48.03 48.03 0 0 0 48.675 98.012 L48.675 77.498 A27.53 27.53 0 0 1 22.502 51.325 Z"/>
+            <circle cx="2" cy="50" r="2" fill="#8CC63E"/>
+            <circle cx="50" cy="98" r="2" fill="#8CC63E"/>
+          </svg>
+        </div>
+        <figcaption><span class="asset-name">Угловое кольцо (фон хедера)</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+      <figure class="asset">
+        <div class="asset-canvas" style="min-height:240px">
+          <div class="dotfield"></div>
+        </div>
+        <figcaption><span class="asset-name">Точечная сетка (CSS-паттерн)</span><button class="code-btn" data-toggle>код</button></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <footer>
+    ЯРКО ГРУПП · элементы фирменного стиля для веба. Шрифт — Montserrat (Google Fonts). Все ассеты — векторные, перекрашиваются через CSS-переменные.
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  // — форматирование разметки для показа —
+  function pretty(s){
+    s = s.trim().replace(/\s+/g,' ').replace(/>\s+</g,'><');
+    s = s.replace(/><\/(path|circle|rect|line|stop|use|ellipse|polyline|polygon)>/g,'/>');
+    var parts = s.replace(/></g,'>\u0001<').split('\u0001');
+    var indent=0, out=[];
+    parts.forEach(function(p){
+      if(/^<\//.test(p)) indent=Math.max(0,indent-1);
+      out.push('  '.repeat(indent)+p);
+      if(/^<[^/!][^>]*[^/]>$/.test(p)) indent++;
+    });
+    return out.join('\n');
+  }
+
+  // — раскрытие/скрытие кода под ассетом —
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var fig = btn.closest('.asset');
+      var canvas = fig.querySelector('.asset-canvas');
+      var existing = fig.querySelector('.code-view');
+      if(existing){
+        var hidden = existing.hasAttribute('hidden');
+        if(hidden){ existing.removeAttribute('hidden'); btn.textContent='скрыть'; }
+        else { existing.setAttribute('hidden',''); btn.textContent='код'; }
+        return;
+      }
+      var view = document.createElement('div');
+      view.className = 'code-view';
+      var bar = document.createElement('div'); bar.className='code-bar';
+      var copy = document.createElement('button'); copy.className='copy-btn'; copy.textContent='Копировать';
+      bar.appendChild(copy);
+      var pre = document.createElement('pre');
+      var code = document.createElement('code');
+      var src = pretty(canvas.innerHTML);
+      code.textContent = src;
+      pre.appendChild(code);
+      view.appendChild(bar); view.appendChild(pre);
+      fig.appendChild(view);
+      btn.textContent='скрыть';
+      copy.addEventListener('click', function(){ copyText(src, copy, 'Копировать'); });
+    });
+  });
+
+  // — копирование HEX —
+  document.querySelectorAll('[data-hex]').forEach(function(el){
+    var v = el.textContent.trim();
+    el.title = 'Скопировать';
+    el.addEventListener('click', function(){ copyText(v, el, v); });
+  });
+
+  function copyText(text, el, restore){
+    var done = function(){
+      el.classList.add('copied'); el.textContent = 'Скопировано';
+      setTimeout(function(){ el.classList.remove('copied'); el.textContent = restore; }, 1300);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ legacy(text, done); });
+    } else { legacy(text, done); }
+  }
+  function legacy(text, done){
+    var ta=document.createElement('textarea'); ta.value=text;
+    ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+    ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); done();
+  }
+})();
+</script>
+</body>
+</html>

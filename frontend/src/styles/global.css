@@ -1,0 +1,231 @@
+/* ============================================================
+   GLOBAL — база + компоненты YARCO GROUP.
+   Стилистика, типографика и компоненты экстраполированы из брендбука
+   (yarko-brand-kit.html). Принципы ТЗ: крупно, воздушно, единый шрифт,
+   НИКАКИХ жирных выделений (макс. font-weight 600).
+   ============================================================ */
+
+/* ---------- reset / база ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--paper);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font-family: var(--font); }
+
+/* ---------- layout ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+.page { padding: 64px 0; border-bottom: 1px solid var(--hair); }
+.page:last-of-type { border-bottom: 0; }
+section.block { padding: 56px 0; border-bottom: 1px solid var(--hair); }
+section.block:last-child { border-bottom: 0; }
+.soft-bg { background: var(--bg-soft); }
+
+/* ---------- типографика (крупно, тонко) ---------- */
+h1, h2, h3 { margin: 0; font-weight: 300; letter-spacing: var(--track-tight); }
+h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 200; line-height: 1.12; }
+h2 { font-size: clamp(26px, 3.4vw, 34px); font-weight: 200; margin-bottom: 28px; }
+h2 b, h1 b { font-weight: 500; } /* «акцент» = чуть тяжелее, НЕ bold, без цвета */
+h3 { font-size: 20px; font-weight: 500; }
+p  { margin: 0 0 16px; }
+.lead { max-width: 620px; color: #555; font-weight: 300; font-size: clamp(16px, 1.6vw, 19px); }
+/* PageHeader: дать воздух между крупным заголовком и лидом */
+header > h1 + .lead, header > h2 + .lead { margin-top: 18px; }
+.hint { color: #666; font-weight: 300; font-size: 14px; max-width: 660px; margin: -12px 0 28px; }
+.muted { color: var(--grey); }
+
+/* eyebrow — нумерованный микро-заголовок секции (как в брендбуке) */
+.eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.eyebrow .dot-ring { width: 14px; height: 14px; flex: 0 0 auto; }
+.eyebrow .num {
+  font-size: 12px; letter-spacing: var(--track-wide); color: var(--grey);
+  font-weight: 500; text-transform: uppercase;
+}
+.accent-line { width: 120px; height: 3px; background: var(--green); margin: 22px 0; border-radius: 2px; }
+
+/* ---------- сетки ассетов ---------- */
+.grid { display: grid; gap: 20px; }
+.g-2 { grid-template-columns: repeat(2, 1fr); }
+.g-3 { grid-template-columns: repeat(3, 1fr); }
+.g-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 880px) { .g-3, .g-4 { grid-template-columns: repeat(2, 1fr); } .g-2 { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .g-3, .g-4 { grid-template-columns: 1fr; } }
+
+/* ---------- кнопки (из брендбука) ---------- */
+.btn {
+  font-family: var(--font); font-weight: 500; font-size: 13px; letter-spacing: .05em;
+  border: 0; border-radius: 10px; padding: 13px 26px; cursor: pointer; transition: .18s;
+  display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-dark); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn-ghost:hover { border-color: var(--green); color: var(--green-dark); }
+
+/* ---------- логотип-локап ---------- */
+.logo { display: inline-flex; align-items: center; font-weight: 300; color: var(--ink); white-space: nowrap; text-decoration: none; }
+.logo .word { letter-spacing: var(--track-wide); }
+.logo .ring { width: 1em; height: 1em; margin: 0 .06em -.02em; flex: 0 0 auto; }
+.logo .tail { letter-spacing: var(--track-wide); color: var(--grey); font-weight: 300; margin-left: .5em; }
+.logo.md { font-size: 30px; }
+.logo.sm { font-size: 22px; }
+.logo.on-dark { color: #F4F4F4; }
+.logo.on-dark .tail { color: #B8B8B8; }
+
+/* ============================================================
+   ШАПКА: utility-bar (контакты) + brand-row (лого + меню)
+   ============================================================ */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--hair); }
+.utility-bar { border-bottom: 1px solid var(--hair); background: var(--bg-soft); }
+.utility-bar .wrap { display: flex; justify-content: flex-end; gap: 22px; padding: 8px 28px; }
+.utility-bar a { color: #555; text-decoration: none; font-size: 12.5px; letter-spacing: .03em; display: inline-flex; align-items: center; gap: 7px; }
+.utility-bar a:hover { color: var(--green-dark); }
+.utility-bar .util-ico { width: 15px; height: 15px; color: var(--grey); }
+.utility-bar a:hover .util-ico { color: var(--green-dark); }
+@media (max-width: 640px) { .utility-bar .wrap { justify-content: center; gap: 16px; flex-wrap: wrap; } }
+
+.brand-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 24px; }
+
+/* ---------- главное меню + выпадающие подменю ---------- */
+.main-nav .menu { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; align-items: center; }
+.main-nav .menu > li { position: relative; }
+.main-nav .menu a, .main-nav .menu .nav-top {
+  color: #444; text-decoration: none; font-size: 13.5px; letter-spacing: .04em; font-weight: 400;
+  background: none; border: 0; cursor: pointer; padding: 8px 2px; display: inline-flex; align-items: center; gap: 6px;
+}
+.main-nav .menu a:hover, .main-nav .menu .nav-top:hover { color: var(--green-dark); }
+.main-nav .menu a[aria-current="page"] { color: var(--green-dark); }
+.main-nav .menu a[aria-current="page"]::after,
+.main-nav .menu .nav-top[aria-current="page"]::after {
+  content: ""; display: block;
+}
+.nav-caret { display: inline-block; width: 7px; height: 7px; margin: -3px 0 0 4px; vertical-align: middle; border-right: 1.4px solid currentColor; border-bottom: 1.4px solid currentColor; transform: rotate(45deg); opacity: .55; transition: .18s; }
+
+/* submenu — раскрытие по hover (десктоп), focus-within (клавиатура) и классу .open (тач) */
+.submenu {
+  position: absolute; top: 100%; left: -14px; min-width: 230px;
+  list-style: none; margin: 8px 0 0; padding: 8px;
+  background: var(--paper); border: 1px solid var(--hair); border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  opacity: 0; visibility: hidden; transform: translateY(6px); transition: .16s;
+}
+.has-children:hover .submenu,
+.has-children:focus-within .submenu,
+.has-children.open .submenu { opacity: 1; visibility: visible; transform: translateY(0); }
+.has-children:hover .nav-caret, .has-children.open .nav-caret { transform: rotate(-135deg) translateY(0); opacity: 1; }
+.submenu li { margin: 0; }
+.submenu a { display: block; padding: 10px 12px; border-radius: 8px; font-size: 13.5px; color: #444; }
+.submenu a:hover { background: var(--bg-soft); color: var(--green-dark); }
+
+/* бургер (мобайл) */
+.nav-toggle { display: none; background: none; border: 1px solid var(--hair); border-radius: 10px; padding: 9px 12px; cursor: pointer; color: var(--ink); }
+@media (max-width: 860px) {
+  .nav-toggle { display: inline-flex; }
+  .main-nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--paper); border-bottom: 1px solid var(--hair); box-shadow: var(--shadow-soft); display: none; }
+  .main-nav.open { display: block; }
+  .main-nav .menu { flex-direction: column; align-items: stretch; gap: 0; padding: 8px 18px 18px; }
+  .main-nav .menu > li { border-bottom: 1px dashed var(--hair); }
+  .submenu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: 0; padding: 0 0 8px 14px; margin: 0; min-width: 0; }
+}
+
+/* ============================================================
+   HERO (главная)
+   ============================================================ */
+.hero { padding: 84px 0 72px; position: relative; overflow: hidden; }
+.hero .tagline { letter-spacing: var(--track-xwide); font-size: 13px; font-weight: 300; color: #555; }
+.hero .tagline b { color: var(--green); font-weight: 600; }
+.hero h1 { margin: 18px 0 0; max-width: 14ch; }
+.hero .lead { margin-top: 26px; }
+.hero .cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+.hero .dotfield {
+  position: absolute; right: -40px; top: 40px; width: 360px; height: 280px; pointer-events: none;
+  background-image: radial-gradient(var(--green) 1.1px, transparent 1.4px);
+  background-size: 12px 12px;
+  -webkit-mask-image: radial-gradient(circle at 70% 30%, #000, transparent 70%);
+          mask-image: radial-gradient(circle at 70% 30%, #000, transparent 70%);
+  opacity: .35;
+}
+@media (max-width: 860px) { .hero .dotfield { display: none; } }
+
+/* feature / value cards */
+.card {
+  border: 1px solid var(--hair); border-radius: var(--radius); background: var(--paper);
+  padding: 26px; display: flex; flex-direction: column; gap: 12px; transition: .18s;
+}
+.card:hover { border-color: var(--green-soft); box-shadow: var(--shadow-soft); }
+.card .ico { width: 40px; height: 40px; color: var(--ink); }
+.card .ico .acc { color: var(--green); }
+.card h3 { margin: 4px 0 0; }
+.card p { color: #555; font-weight: 300; font-size: 14.5px; margin: 0; }
+
+/* ============================================================
+   ПОИСК + КАТАЛОГ ТОВАРОВ
+   ============================================================ */
+.product-search { width: 100%; }
+.product-search .search-box {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  border: 1px solid var(--hair); border-radius: var(--radius); padding: 16px 20px; background: var(--paper);
+  transition: .18s;
+}
+.product-search .search-box:focus-within { border-color: var(--green); box-shadow: var(--shadow-soft); }
+.product-search input {
+  flex: 1; border: 0; outline: 0; font-family: var(--font); font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300; color: var(--ink); background: transparent;
+}
+.product-search input::placeholder { color: var(--grey); }
+.product-search .search-ico { width: 22px; height: 22px; color: var(--grey); flex: 0 0 auto; }
+.search-meta { color: var(--grey); font-size: 13px; margin-top: 12px; letter-spacing: .02em; }
+
+.product-card { overflow: hidden; padding: 0; }
+.product-card .thumb {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-soft); border-bottom: 1px solid var(--hair); color: var(--green-dark);
+}
+.product-card .thumb .ico { width: 52px; height: 52px; color: var(--ink); }
+.product-card .thumb .ico .acc { color: var(--green); }
+.product-card .body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+.product-card .cat { font-size: 11px; letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--grey); font-weight: 500; }
+.product-card h3 { font-size: 16px; font-weight: 500; }
+.product-card .art { font-size: 12.5px; color: var(--grey); }
+
+.empty-state { padding: 48px 0; text-align: center; color: var(--grey); }
+
+/* category chips */
+.chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 24px 0 8px; }
+.chip-link {
+  border: 1px solid var(--hair); border-radius: 999px; padding: 8px 16px; font-size: 13px;
+  color: #555; text-decoration: none; transition: .18s; cursor: pointer; background: var(--paper);
+}
+.chip-link:hover { border-color: var(--green); color: var(--green-dark); }
+.chip-link[aria-current="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* ============================================================
+   ФУТЕР
+   ============================================================ */
+.site-footer { background: var(--ink); color: #cfcfcf; padding: 56px 0 40px; margin-top: 0; }
+.site-footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+@media (max-width: 760px) { .site-footer .cols { grid-template-columns: 1fr; gap: 28px; } }
+.site-footer h4 { font-size: 12px; letter-spacing: var(--track-wide); text-transform: uppercase; color: #8f8f8f; font-weight: 500; margin: 0 0 14px; }
+.site-footer a { color: #d8d8d8; text-decoration: none; font-weight: 300; font-size: 14px; }
+.site-footer a:hover { color: var(--green); }
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.site-footer .req { color: #8f8f8f; font-size: 12.5px; font-weight: 300; line-height: 1.7; }
+.site-footer .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid #333; margin-top: 36px; padding-top: 22px; color: #8f8f8f; font-size: 12.5px; }
+
+/* breadcrumb */
+.crumbs { color: var(--grey); font-size: 12.5px; letter-spacing: .03em; margin-bottom: 18px; }
+.crumbs a { text-decoration: none; color: var(--grey); }
+.crumbs a:hover { color: var(--green-dark); }
+
+/* skip-link (a11y) */
+.skip-link { position: absolute; left: -9999px; top: 0; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 0 0 10px 0; z-index: 100; }
+.skip-link:focus { left: 0; }
