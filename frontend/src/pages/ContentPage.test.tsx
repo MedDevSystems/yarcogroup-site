@@ -23,8 +23,8 @@ describe('<ContentPage>', () => {
     wrap(<ContentPage pageKey="mission" />);
     const h1 = screen.getByRole('heading', { level: 1 });
     expect(h1).toHaveTextContent('Всё необходимое');
-    expect(h1).toHaveTextContent('для медицины');
-    expect(screen.getByText(/обеспечиваем медицинские организации/i)).toBeInTheDocument();
+    expect(h1).toHaveTextContent('для бизнеса');
+    expect(screen.getByText(/обеспечиваем бизнес/i)).toBeInTheDocument();
     ldd(9, 'ContentPage.test', 'KNOWN', 'belief: mission renders heading+lead+blocks');
   });
 

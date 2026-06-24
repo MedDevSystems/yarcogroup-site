@@ -19,7 +19,6 @@ import type { ReactElement } from 'react';
 import type { PageBlock } from '../types';
 import { getPage } from '../content/pages';
 import { PageHeader, Crumbs } from '../components/Section';
-import { Icon } from '../components/Icon';
 import { useReveal } from '../lib/useReveal';
 import { usePageText } from '../lib/content';
 import { ldd } from '../lib/ldd';
@@ -43,7 +42,6 @@ function Block({ block }: { block: PageBlock }): ReactElement {
         <ul className="grid g-3" style={{ listStyle: 'none', padding: 0, marginTop: 8 }}>
           {block.items.map((c, i) => (
             <li key={i} className="card">
-              <Icon name={c.icon} />
               <h3>{c.title}</h3>
               <p>{c.text}</p>
             </li>

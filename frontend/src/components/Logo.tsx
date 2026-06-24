@@ -1,7 +1,7 @@
 //#region MODULE_CONTRACT [DOMAIN(8): UI; CONCEPT(8): BrandLockup; TECH(8): React]
 /**
  * @file Logo.tsx
- * @brief Logo lockup "YARC◯ GROUP" — word + ring mark (the "O") + tail, ported from the brandbook locap.
+ * @brief Logo lockup "ЯРК◯ групп" — word + ring mark (the "О") + tail, ported from the brandbook locap (кириллица — канон).
  * @details The ring replaces the letter "O" (ТЗ: «Знак компании в виде буквы О»). Links to home. Sizes mirror
  *          the brandbook (.logo.md/.sm). Gradient ring used on the brand row for a richer mark.
  * @modulecontract
@@ -22,10 +22,10 @@ import { RingMark } from './Icon';
 /** @purpose Brand lockup linking home. @io { size?, gradient? } -> <Link> @complexity 1 */
 export function Logo({ size = 'md', gradient = true }: { size?: 'md' | 'sm'; gradient?: boolean }): ReactElement {
   return (
-    <Link to="/" className={`logo ${size}`} aria-label="YARCO GROUP — на главную">
-      <span className="word">YARC</span>
+    <Link to="/" className={`logo ${size}`} aria-label="ЯРКО ГРУПП — на главную">
+      <span className="word">ЯРК</span>
       <RingMark gradient={gradient} />
-      <span className="tail">GROUP</span>
+      <span className="tail">групп</span>
     </Link>
   );
 }

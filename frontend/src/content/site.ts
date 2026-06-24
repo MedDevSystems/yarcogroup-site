@@ -17,7 +17,7 @@
 import type { SiteConfig } from '../types';
 
 export const SITE: SiteConfig = {
-  brand: 'YARCO GROUP',
+  brand: 'ЯРКО ГРУПП',
   email: 'info@yarcogroup.ru',
   phone: '+7 (495) 000-00-00',
   phoneHref: 'tel:+74950000000',
