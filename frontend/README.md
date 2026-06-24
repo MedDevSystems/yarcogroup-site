@@ -55,6 +55,15 @@ VITE_API_BASE=http://localhost:8000 npm run dev
 3. TLS — Let's Encrypt (`certbot --nginx -d yarcogroup.ru -d www.yarcogroup.ru`).
 Точный VPS/конфиг — согласовать при выкладке (паттерн как у invoice-mail-gateway / agata).
 
+## CMS — редактируемые тексты (PocketBase)
+Тексты заголовков/лидов страниц и контакты/реквизиты правятся **без программиста** через PocketBase.
+- Админка: `https://yarkogroup.ductus.pro/pb/_/` (superuser-логин).
+- Бэкенд: `pocketbase-yarko.service` на vertebrae (127.0.0.1:8090), nginx проксирует `/pb/`. Конфиг — `deploy/yarkogroup.ductus.pro.conf`; сид коллекций — `deploy/pocketbase-seed.py`.
+- Коллекции: `site` (контакты/реквизиты) и `pages` (по ключу: eyebrow/titleLead/titleAccent/lead).
+- Как читается фронтом: `src/lib/content.tsx` (`ContentProvider` + `useSite()`/`usePageText()`) накладывает значения из PB поверх кодовых дефолтов. **Без `VITE_PB_URL` фронт работает на кодовых константах** (тесты/локалка), с `VITE_PB_URL=/pb` — читает CMS.
+- Сборка для прод: `VITE_PB_URL=/pb npm run build`. Кэш на проде отключён → правки видны после reload.
+- Каталог товаров и меню пока в коде (по договорённости); расширяется добавлением коллекции/полей.
+
 ## Дорожная карта
 - **v2:** FastAPI + БД (object-relational ядро), админка на метадата-формах (страницы/товары/фото), серверный
   каталог и поиск (SQL VIEW). Шов `api.ts` уже готов.

@@ -16,19 +16,24 @@
 // STRUCTURE: ▶ tagline ⊕ h1 ⊕ lead ⊕ cta(Продукты, Партнёрам) ⊕ dotfield(decor) ⟶ Hero
 import type { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import { usePageText } from '../lib/content';
 
 //#region COMP_Hero [DOMAIN(8): UI; CONCEPT(8): Hero; TECH(8): React]
 /** @purpose Render the home hero. @complexity 1 */
 export function Hero(): ReactElement {
+  const t = usePageText('hero', {
+    eyebrow: 'ВСЕ НЕОБХОДИМОЕ',
+    titleLead: 'Надёжные поставки',
+    titleAccent: 'для медицины',
+    lead: 'Медицинские расходные материалы и средства гигиены для клиник, лабораторий и стационаров. Сертифицированная продукция, контроль качества и доставка по всей России и СНГ.',
+  });
+  const [taglineFirst, ...taglineRest] = t.eyebrow.split(' ');
   return (
     <section className="hero">
       <div className="wrap">
-        <div className="tagline"><b>ВСЕ</b> НЕОБХОДИМОЕ</div>
-        <h1>Надёжные поставки <b>для медицины</b></h1>
-        <p className="lead">
-          Медицинские расходные материалы и средства гигиены для клиник, лабораторий
-          и стационаров. Сертифицированная продукция, контроль качества и доставка по всей России и СНГ.
-        </p>
+        <div className="tagline"><b>{taglineFirst}</b> {taglineRest.join(' ')}</div>
+        <h1>{t.titleLead} <b>{t.titleAccent}</b></h1>
+        <p className="lead">{t.lead}</p>
         <div className="cta">
           <Link className="btn btn-primary" to="/products">Смотреть продукты</Link>
           <Link className="btn btn-ghost" to="/partners">Стать партнёром</Link>

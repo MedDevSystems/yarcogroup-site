@@ -1,9 +1,9 @@
 //#region MODULE_CONTRACT [DOMAIN(8): UI; CONCEPT(8): ContactsPage; TECH(8): React]
 /**
  * @file Contacts.tsx
- * @brief Contacts page — email, phone, address and legal requisites from SITE.
+ * @brief Contacts page — email, phone, address and legal requisites from site.
  * @details v1 has no backend, so the page shows actionable contacts (mailto/tel) and requisites; a contact
- *          form is deferred to v2 (needs the FastAPI endpoint). Single source: content/site SITE.
+ *          form is deferred to v2 (needs the FastAPI endpoint). Single source: content/site site.
  * @modulecontract
  * @purpose Present how to reach the company; all values from one config object.
  * @invariants Email/phone are actionable links; requisites match the footer.
@@ -15,40 +15,40 @@
 // GREP_SUMMARY: contacts, email, phone, address, requisites, mailto, tel
 // STRUCTURE: ▶ header ⊕ cards(email,phone,address) ⊕ requisites ⟶ Contacts
 import type { ReactElement } from 'react';
-import { SITE } from '../content/site';
+import { useSite, usePageText } from '../lib/content';
 import { PageHeader } from '../components/Section';
 
 //#region COMP_Contacts [DOMAIN(8): UI; CONCEPT(8): ContactsPage; TECH(8): React]
-/** @purpose Render contacts and requisites from SITE. @complexity 1 */
+/** @purpose Render contacts and requisites from site. @complexity 1 */
 export function Contacts(): ReactElement {
+  const site = useSite();
+  const t = usePageText('contacts', {
+    eyebrow: '06 / КОНТАКТЫ', titleLead: 'Свяжитесь', titleAccent: 'с нами',
+    lead: 'Ответим на вопросы о продукции, поставках и сотрудничестве.',
+  });
   return (
     <div className="page"><div className="wrap">
-      <PageHeader
-        eyebrow="06 / КОНТАКТЫ"
-        titleLead="Свяжитесь"
-        titleAccent="с нами"
-        lead="Ответим на вопросы о продукции, поставках и сотрудничестве."
-      />
+      <PageHeader eyebrow={t.eyebrow} titleLead={t.titleLead} titleAccent={t.titleAccent} lead={t.lead} />
 
       <ul className="grid g-3" style={{ listStyle: 'none', padding: 0, marginTop: 32 }}>
         <li className="card">
           <h3>Почта</h3>
-          <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
         </li>
         <li className="card">
           <h3>Телефон</h3>
-          <p><a href={SITE.phoneHref}>{SITE.phone}</a></p>
+          <p><a href={site.phoneHref}>{site.phone}</a></p>
         </li>
         <li className="card">
           <h3>Адрес</h3>
-          <p>{SITE.address}</p>
+          <p>{site.address}</p>
         </li>
       </ul>
 
       <div className="card" style={{ marginTop: 24 }}>
         <h3>Реквизиты</h3>
         <p className="muted">
-          {SITE.requisites.legalName} · {SITE.requisites.inn} · {SITE.requisites.ogrn}
+          {site.requisites.legalName} · {site.requisites.inn} · {site.requisites.ogrn}
         </p>
       </div>
     </div></div>

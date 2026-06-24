@@ -6,7 +6,7 @@
  *          surface (graphite) per brand palette. Requisites are v1 placeholders (TZ2 Допущения).
  * @modulecontract
  * @purpose One accessible footer rendering site contacts, policy link and requisites.
- * @invariants Email/phone are actionable links; privacy link points to SITE.privacyPath.
+ * @invariants Email/phone are actionable links; privacy link points to site.privacyPath.
  * @links USES(8): content/site SITE, content/nav NAV; SPEC: ТЗ #1 «Почта, телефон, Политика…, реквизиты»
  * @changes LAST_CHANGE: [v0.1.0 - Footer with contacts + requisites.]
  * @modulemap COMP 8[Footer] => Footer
@@ -17,22 +17,23 @@
 import type { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { NAV } from '../content/nav';
-import { SITE } from '../content/site';
+import { useSite } from '../lib/content';
 
 //#region COMP_Footer [DOMAIN(8): UI; CONCEPT(8): Chrome; TECH(8): React]
 /** @purpose Render footer from SITE + NAV. @complexity 1 */
 export function Footer(): ReactElement {
+  const site = useSite();
   const year = 2026; // v1: статично (Date.* избегаем в детерминируемом UI); обновлять при релизе.
   return (
     <footer className="site-footer">
       <div className="wrap">
         <div className="cols">
           <div>
-            <h4>{SITE.brand}</h4>
+            <h4>{site.brand}</h4>
             <ul>
-              <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
-              <li><a href={SITE.phoneHref}>{SITE.phone}</a></li>
-              <li><span className="req">{SITE.address}</span></li>
+              <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+              <li><a href={site.phoneHref}>{site.phone}</a></li>
+              <li><span className="req">{site.address}</span></li>
             </ul>
           </div>
 
@@ -48,18 +49,18 @@ export function Footer(): ReactElement {
           <div>
             <h4>Правовая информация</h4>
             <ul>
-              <li><Link to={SITE.privacyPath}>Политика конфиденциальности</Link></li>
+              <li><Link to={site.privacyPath}>Политика конфиденциальности</Link></li>
             </ul>
             <p className="req">
-              {SITE.requisites.legalName}<br />
-              {SITE.requisites.inn}<br />
-              {SITE.requisites.ogrn}
+              {site.requisites.legalName}<br />
+              {site.requisites.inn}<br />
+              {site.requisites.ogrn}
             </p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© {year} {SITE.brand}. Все права защищены.</span>
+          <span>© {year} {site.brand}. Все права защищены.</span>
           <span>yarcogroup.ru</span>
         </div>
       </div>

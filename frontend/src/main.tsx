@@ -18,6 +18,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
+import { ContentProvider } from './lib/content';
 import { ldd } from './lib/ldd';
 import './styles/tokens.css';
 import './styles/global.css';
@@ -29,7 +30,9 @@ ldd(8, 'main', 'MOUNT', 'belief: #root present, mounting App in BrowserRouter');
 createRoot(root).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <ContentProvider>
+        <App />
+      </ContentProvider>
     </BrowserRouter>
   </StrictMode>,
 );

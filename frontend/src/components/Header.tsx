@@ -21,7 +21,7 @@
 import { useEffect, useState, type ReactElement } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { NAV } from '../content/nav';
-import { SITE } from '../content/site';
+import { useSite } from '../lib/content';
 import { Icon } from './Icon';
 import { Logo } from './Logo';
 import { ldd } from '../lib/ldd';
@@ -42,6 +42,7 @@ function MenuLink({ to, label, current, className }: { to: string; label: string
 /** @purpose Render the full header from SITE + NAV; manage the mobile drawer. @complexity 3 */
 export function Header(): ReactElement {
   const { pathname } = useLocation();
+  const site = useSite();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Close the mobile drawer whenever the route changes.
@@ -57,8 +58,8 @@ export function Header(): ReactElement {
       {/* верхняя utility-строка: контакты / почта */}
       <div className="utility-bar">
         <div className="wrap">
-          <a href={SITE.phoneHref}><Icon name="phone" className="util-ico" /> {SITE.phone}</a>
-          <a href={`mailto:${SITE.email}`}><Icon name="mail" className="util-ico" /> {SITE.email}</a>
+          <a href={site.phoneHref}><Icon name="phone" className="util-ico" /> {site.phone}</a>
+          <a href={`mailto:${site.email}`}><Icon name="mail" className="util-ico" /> {site.email}</a>
         </div>
       </div>
 
